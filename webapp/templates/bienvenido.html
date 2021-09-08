@@ -1,28 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bienvenido</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Sistema de Administracion de Personas</h1>
-    <div> Numero de personas {{no_personas}} </div>
-    <div> 
-        <a href="nueva_persona">Agregar persona</a>
+    <div>Numero de personas {{no_personas}}</div>
+    <div>
+      <a href="nueva_persona">Agregar persona</a>
     </div>
     <div>
-        <ul>
-            {% for persona in personas %}
-                <li>Persona {{persona.id}}: 
-                    {{ persona.nombre}} 
-                    {{persona.apellido}}, 
-                    {{persona.email}}
-                    <a href="detalle_persona/{{persona.id}}"> Ver detalle </a>
-                </li>
-            {% endfor %}
-        </ul>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for persona in personas %}
+          <tr>
+            <td>{{persona.id}}</td>
+            <td>{{ persona.nombre}} {{persona.apellido}}</td>
+            <td>{{persona.email}}</td>
+            <td><a href="detalle_persona/{{persona.id}}"> Ver </a></td>
+            <td><a href="editar_persona/{{persona.id}}"> Editar </a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
     </div>
-</body>
+  </body>
 </html>
