@@ -23,7 +23,8 @@ class Persona(models.Model):
     email = models.CharField(max_length=255)
     # Llave foranea 
     domicilio = models.ForeignKey(Domicilio, on_delete=models.SET_NULL, null=True)
-
+    # Para eliminar en cascada tanto el domicilio como la direccion ->
+    #domicilio = models.ForeignKey(Domicilio, on_delete=models.CASCADE, null=True)
     # Persolanizar el ID
     def __str__(self):
         return f'Persona {self.id}: {self.nombre} {self.email}'
