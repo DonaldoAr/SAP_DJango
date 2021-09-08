@@ -19,7 +19,7 @@ from webapp.views import bienvenido
 from persona.views import detallePersonas, nuevaPersona
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', bienvenido),
+    path('', bienvenido, name= 'index'), # Add a named
     path('detalle_persona/<int:id>', detallePersonas),
     path('nueva_persona', nuevaPersona)
 ]
