@@ -3,6 +3,7 @@ from django.forms import modelform_factory
 # Create your views here.
 from persona.models import Persona
 from persona.forms import PersonaForm
+
 def detallePersonas(request, id):
     # persona = Persona.objects.get(pk = id)
     # When don't have a user that not exits
@@ -48,3 +49,10 @@ def editarPersona(request, id):
         # Recibe un object persona form que ya fue creado
         formaPersona = PersonaForm(instance= persona )
     return render(request, 'personas/editar.html', {'formaPersona':formaPersona})
+
+
+def eliminarPersona(request, id):
+    persona = get_object_or_404(Persona, pk=id)
+    if persona:
+        persona.delete()
+    return redirect('index')
